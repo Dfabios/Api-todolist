@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
-
-
 
 @RestController
 @RequestMapping("/todos")
@@ -25,21 +24,25 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @PostMapping("/")
+    @PostMapping
     List<Todo> create(@RequestBody Todo todo) {
-         return todoService.salvar(todo);
+         return todoService.create(todo);
     }
-    @GetMapping
-    List<Todo> list() {
-        return todoService.list(); 
+
+   
+List<Todo> getAllTodos() {
+    return todoService.list(); 
 }
+
+
 
     @PutMapping
     List <Todo> update(@RequestBody Todo todo) {
-        return todoService.update(todo);
+        return todoService.update(todo);  
     }
+
     @DeleteMapping("{id}")
-    List<Todo> delete(@PathVariable ("id") long id) {
+    List<Todo> delete(@PathVariable("id") long id) {
         return todoService.delete(id);  
     }
 }

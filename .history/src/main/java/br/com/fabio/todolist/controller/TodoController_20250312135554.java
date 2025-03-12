@@ -27,7 +27,7 @@ public class TodoController {
 
     @PostMapping("/")
     List<Todo> create(@RequestBody Todo todo) {
-         return todoService.salvar(todo);
+         return todoService.create(todo);
     }
     @GetMapping
     List<Todo> list() {
@@ -38,7 +38,7 @@ public class TodoController {
     List <Todo> update(@RequestBody Todo todo) {
         return todoService.update(todo);
     }
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     List<Todo> delete(@PathVariable ("id") long id) {
         return todoService.delete(id);  
     }

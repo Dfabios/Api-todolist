@@ -5,6 +5,7 @@ import br.com.fabio.todolist.repository.TodoRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TodoService {
@@ -15,9 +16,9 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    public List<Todo> salvar(Todo todo) {
-        todoRepository.save(todo);
-        return list();
+    public List<Todo> create(Todo todo) {
+      todoRepository.save(todo);
+      return list();
     }
 
     public List<Todo> list() {
@@ -33,7 +34,8 @@ public class TodoService {
     public List<Todo> delete(long id) {
         todoRepository.deleteById(id);
         return list();
-
+       
     }
 
+    
 }
